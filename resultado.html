@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        
+        r = [1.15, 0.85] 
+        c = [100,200]
+
+        function convertidor(rates,currencies){
+            const amountConverted = []
+
+            for(let i=0; i<currencies.length; i++){
+                
+                const amount = currencies[i]*rates[i]
+                amountConverted.push(amount)
+                
+            }
+            return amountConverted;
+
+        }
+        console.log(convertidor(r,c))
+    </script>
+</body>
+</html>
