@@ -27,20 +27,19 @@
                   <a class="nav-link" href="#">Información</a>
                 </li>
               </ul>
-              <form class="d-flex">
-                <div class="input-group container-search-btn">
-                    <input type="text" class="form-control d-inline-flex focus-ring focus-ring-secondary border" id="buscarPokemon" placeholder="Buscar..." >
-                    <button type="button" id="btnBuscar" class="input-group-text icono-buscar"><i class="bi bi-search btn-secondary"></i></button>
+                <div class="d-flex">
+                    <form id="frmBuscar" class="input-group container-search-btn">
+                        <input type="text" class="form-control d-inline-flex focus-ring focus-ring-secondary border" id="txtBuscar" placeholder="Buscar..." >
+                        <div class="input-group-text icono-buscar"><i class="bi bi-search btn-secondary"></i></div>
+                    </form>
                 </div>
-              </form>
-
             </div>
           </div>
         </nav>
     </header>
 
     <main class="">
-        <div id="card-principale" class="container my-4 d-none">
+        <div id="card-principale" class="container my-4 ">
             <center>
                 <img src="img/logo.png" class="bi me-2" width="150" height="60">
             </center>
@@ -100,7 +99,7 @@
                 <div class="col-md-3 col-xxl-3 d-lg-none"></div>
             </div>
         </div>
-        <div id="pokemonResultado" class="container my-4">
+        <div id="pokemonResultado" class="container my-4 d-none">
             <center>
                 <img src="img/logo.png" class="bi me-2" width="150" height="60">
             </center>

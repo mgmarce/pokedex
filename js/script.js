@@ -1,33 +1,45 @@
 
-document.getElementById('focusLink').addEventListener('click', function() {
+/*document.getElementById('focusLink').addEventListener('click', function() {
     document.getElementById('buscarPokemon').focus();
-});
+});*/
 
-var inputElement = document.getElementById('buscarPokemon');
-var inputValue = inputElement.value.trim();
-function retornarDatos() {
-    return {
-        "buscarPokemon": document.getElementById('buscarPokemon').value,
-    };
-}
-$('#btnBuscar').click(function() {
-    if (inputValue === "") {
-        alert("El input está vacío");
-    } else {
-        $.ajax({
-            url: mostrarPokemon(inputValue),
-            type: 'POST',
-            dataType: 'json',
-            success: function() {
-                mostrarPokemon();
+const buscarPokemon = async (p) => {
+    p.preventDefault();
+    const input = document.getElementById("txtBuscar");
+    const val = input.value.trim();
+  
+    const fetchPokeData = async (val) => {
+        try {
+            const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${val}`);
+            if (!res.ok) {
+                console.log('Error al buscar Pokémon');
             }
-        })
-    }
-})
-function mostrarPokemon(poke) {
+            const data = await res.json();
+            return {
+                nombre: data.name,
+                experiencia: data.id
+            };
+        } catch (error) {
+            //console.log('Error fetching Pokémon data: ...', error);
+            return null;
+        }
+    };
 
-    /*let pokeId = poke.id.toString();
-    console.log(pokeId)*/
-    console.log(poke)
+
+    if (val) {
+        const pokemon = await fetchPokeData(val);
+        if (pokemon) {
+            console.log('Pokemon Data:', pokemon);
+        } else {
+            alert('Pokémon no encontrado');
+        }
+    } else {
+      alert("Esta vacio");
+    }
+
     
-}
+    
+};
+
+const form = document.getElementById("frmBuscar");
+form.addEventListener("submit", buscarPokemon);
